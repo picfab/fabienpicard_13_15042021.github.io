@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Provider } from 'react-redux'
+import Home from './Views/Home'
+import SignIn from './Views/SignIn'
+import User from './Views/User'
+import Transactions from './Views/Transactions'
+import Routes from './routes'
+import store from './store'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <Routes
+        urls={{
+          home: <Home />,
+          signin: <SignIn />,
+          user: <User />,
+          transactions: <Transactions />,
+        }}
+      />
+    </Provider>
+  )
 }
 
-export default App;
+export default App

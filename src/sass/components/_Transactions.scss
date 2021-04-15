@@ -1,0 +1,45 @@
+
+.listContent{
+	width: 80%;
+	overflow-x: scroll;
+	margin: 200px auto 0;
+	padding-bottom: 20px;
+	position: relative;
+	*{
+		color:#28313c;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	&__accordions{
+		display: inline-table;
+		width: 100%;
+		border: 2px solid #bfc8d3;
+		.accordion:last-of-type{
+			border-bottom: none;
+		}
+	}
+
+	&__line{
+		width: 100%;
+		display: flex;
+		margin: 0;
+		box-sizing: border-box;
+		justify-content: space-around;
+		min-width:450px;
+		&>*{
+      width: 25%;
+    }
+	}
+	&__header{
+		padding: 13px 20px;
+	}
+	&__content{
+		&>*{
+			text-align: left;
+			line-height: 1.8em;
+			font-size: 15px;
+			margin-left: 10.2%;
+		}
+	}
+}

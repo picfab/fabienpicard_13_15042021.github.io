@@ -43,7 +43,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-instal-server-api-tutorial.html">instal-server-api-tutorial</a></li></ul><h3>Components</h3><ul><li><a href="module-Accordion.html">Accordion</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-HeaderProfile.html">HeaderProfile</a></li><li><a href="module-HeaderTransaction.html">HeaderTransaction</a></li><li><a href="module-InputText.html">InputText</a></li><li><a href="module-ItemListTransaction.html">ItemListTransaction</a></li><li><a href="module-ItemTransaction.html">ItemTransaction</a></li><li><a href="module-SelectCat.html">SelectCat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#verifUser">verifUser</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li><li><a href="module-SignIn.html">SignIn</a></li><li><a href="module-Transactions.html">Transactions</a></li><li><a href="module-User.html">User</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-instal-server-api-tutorial.html">instal-server-api-tutorial</a></li><li><a href="tutorial-sawgger content.html">sawgger content</a></li></ul><h3>Components</h3><ul><li><a href="module-Accordion.html">Accordion</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-HeaderProfile.html">HeaderProfile</a></li><li><a href="module-HeaderTransaction.html">HeaderTransaction</a></li><li><a href="module-InputText.html">InputText</a></li><li><a href="module-ItemListTransaction.html">ItemListTransaction</a></li><li><a href="module-ItemTransaction.html">ItemTransaction</a></li><li><a href="module-SelectCat.html">SelectCat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#verifUser">verifUser</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li><li><a href="module-SignIn.html">SignIn</a></li><li><a href="module-Transactions.html">Transactions</a></li><li><a href="module-User.html">User</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -61,53 +61,61 @@
 </header>
 
 <article>
-    <h3>FIRST go to download the nodeServer</h3>
-<p><a href="https://github.com/picfab/P9-front-end-dashboard">https://github.com/picfab/P9-front-end-dashboard</a></p>
-<p>Project 9 - Front-end Dashboard
-This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.</p>
+    <h1>Project #10 - Argent Bank API</h1>
+<p>This codebase contains the code needed to run the backend for Argent Bank.</p>
+<h2>Getting Started</h2>
+<h3>Prerequisites</h3>
+<p>Argent Bank uses the following tech stack:</p>
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js v12</a></li>
+<li><a href="https://www.mongodb.com/try/download/community">MongoDB Community Server</a></li>
+</ul>
+<p>Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:</p>
+<pre class="prettyprint source lang-bash"><code># Check Node.js version
+node --version
+
+# Check Mongo version
+mongo --version
+</code></pre>
+<h3>Instructions</h3>
 <ol>
-<li>
-<p>General information
-To start this project, you are free to use Docker or not. In this documentation, we will see several methods to launch the project easily.</p>
-</li>
-<li>
-<p>Project (without Docker)
-2.1 Prerequisites
-NodeJS (version 12.18)
-Yarn
-If you are working with several versions of NodeJS, we recommend you install nvm. This tool will allow you to easily manage your NodeJS versions.</p>
-</li>
+<li>Fork this repo</li>
+<li>Clone the repo onto your computer</li>
+<li>Open a terminal window in the cloned project</li>
+<li>Run the following commands:</li>
 </ol>
-<p>2.2 Launching the project
-Fork the repository
-Clone it on your computer.
-The yarn command will allow you to install the dependencies.
-The yarn dev command will allow you to run the micro API.
-3. Project (with Docker)
-2.1 Prerequisites
-Docker Desktop
-2.2 Starting the project
-The docker image build --no-cache -t micro-api . command will allow you to build your image.
-The docker container run --name micro-api -p 3000:3000 -dt micro-api yarn command will allow you to create your Docker container and run your image on port 3000.
-The docker container stop micro-api command will allow you to stop your micro-api.
-The docker container rm micro-api command will allow you to delete your micro-api container.
-2.3 Vscode and container remotes
-Finally, if you have VsCode, you can easily launch your project in a docker environment.</p>
-<p>You will need the Remote Development extension. Once you have this extension installed, just click on the Reopen in Container button.</p>
-<p>Once in the container, run the yarn dev command.</p>
-<ol start="4">
-<li>Endpoints
-4.1 Possible endpoints
-This project includes four endpoints that you will be able to use:</li>
-</ol>
-<p>http://localhost:3000/user/${userId} - retrieves information from a user. This first endpoint includes the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.).
-http://localhost:3000/user/${userId}/activity - retrieves a user's activity day by day with kilograms and calories.
-http://localhost:3000/user/${userId}/average-sessions - retrieves the average sessions of a user per day. The week starts on Monday.
-http://localhost:3000/user/${userId}/performance - retrieves a user's performance (energy, endurance, etc.).
-Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.</p>
-<p>4.2 Examples of queries
-http://localhost:3000/user/12/performance - Retrieves the performance of the user with id 12
-http://localhost:3000/user/18 - Retrieves user 18's main information.</p>
+<pre class="prettyprint source lang-bash"><code># Install dependencies
+npm install
+
+# Start local dev server
+npm run dev:server
+
+# Populate database with two users
+npm run populate-db
+</code></pre>
+<p>Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!</p>
+<h2>Populated Database Data</h2>
+<p>Once you run the <code>populate-db</code> script, you should have two users in your database:</p>
+<h3>Tony Stark</h3>
+<ul>
+<li>First Name: <code>Tony</code></li>
+<li>Last Name: <code>Stark</code></li>
+<li>Email: <code>tony@stark.com</code></li>
+<li>Password: <code>password123</code></li>
+</ul>
+<h3>Steve Rogers</h3>
+<ul>
+<li>First Name: <code>Steve</code>,</li>
+<li>Last Name: <code>Rogers</code>,</li>
+<li>Email: <code>steve@rogers.com</code>,</li>
+<li>Password: <code>password456</code></li>
+</ul>
+<h2>API Documentation</h2>
+<p>To learn more about how the API works, once you have started your local environment, you can visit: http://localhost:3001/api-docs</p>
+<h2>Design Assets</h2>
+<p>Static HTML and CSS has been created for most of the site and is located in: <code>/designs</code>.</p>
+<p>For some of the dynamic features, like toggling user editing, there is a mock-up for it in <code>/designs/wireframes/edit-user-name.png</code>.</p>
+<p>And for the API model that you will be proposing for transactitons, the wireframe can be found in <code>/designs/wireframes/transactions.png</code>.</p>
 </article>
 
 </section>
@@ -119,7 +127,7 @@ http://localhost:3000/user/18 - Retrieves user 18's main information.</p>
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 16 2021 14:50:13 GMT+0200 (heure d’été d’Europe centrale)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 16 2021 15:33:27 GMT+0200 (heure d’été d’Europe centrale)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>

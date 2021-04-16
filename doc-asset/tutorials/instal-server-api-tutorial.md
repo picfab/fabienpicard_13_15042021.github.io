@@ -1,48 +1,72 @@
-### FIRST go to download the nodeServer
-[https://github.com/picfab/P9-front-end-dashboard](https://github.com/picfab/P9-front-end-dashboard)
+# Project #10 - Argent Bank API
 
-Project 9 - Front-end Dashboard
-This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.
+This codebase contains the code needed to run the backend for Argent Bank.
 
-1. General information
-To start this project, you are free to use Docker or not. In this documentation, we will see several methods to launch the project easily.
+## Getting Started
 
-2. Project (without Docker)
-2.1 Prerequisites
-NodeJS (version 12.18)
-Yarn
-If you are working with several versions of NodeJS, we recommend you install nvm. This tool will allow you to easily manage your NodeJS versions.
+### Prerequisites
 
-2.2 Launching the project
-Fork the repository
-Clone it on your computer.
-The yarn command will allow you to install the dependencies.
-The yarn dev command will allow you to run the micro API.
-3. Project (with Docker)
-2.1 Prerequisites
-Docker Desktop
-2.2 Starting the project
-The docker image build --no-cache -t micro-api . command will allow you to build your image.
-The docker container run --name micro-api -p 3000:3000 -dt micro-api yarn command will allow you to create your Docker container and run your image on port 3000.
-The docker container stop micro-api command will allow you to stop your micro-api.
-The docker container rm micro-api command will allow you to delete your micro-api container.
-2.3 Vscode and container remotes
-Finally, if you have VsCode, you can easily launch your project in a docker environment.
+Argent Bank uses the following tech stack:
 
-You will need the Remote Development extension. Once you have this extension installed, just click on the Reopen in Container button.
+- [Node.js v12](https://nodejs.org/en/)
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community)
 
-Once in the container, run the yarn dev command.
+Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:
 
-4. Endpoints
-4.1 Possible endpoints
-This project includes four endpoints that you will be able to use:
+```bash
+# Check Node.js version
+node --version
 
-http://localhost:3000/user/${userId} - retrieves information from a user. This first endpoint includes the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.).
-http://localhost:3000/user/${userId}/activity - retrieves a user's activity day by day with kilograms and calories.
-http://localhost:3000/user/${userId}/average-sessions - retrieves the average sessions of a user per day. The week starts on Monday.
-http://localhost:3000/user/${userId}/performance - retrieves a user's performance (energy, endurance, etc.).
-Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.
+# Check Mongo version
+mongo --version
+```
 
-4.2 Examples of queries
-http://localhost:3000/user/12/performance - Retrieves the performance of the user with id 12
-http://localhost:3000/user/18 - Retrieves user 18's main information.
+### Instructions
+
+1. Fork this repo
+1. Clone the repo onto your computer
+1. Open a terminal window in the cloned project
+1. Run the following commands:
+
+```bash
+# Install dependencies
+npm install
+
+# Start local dev server
+npm run dev:server
+
+# Populate database with two users
+npm run populate-db
+```
+
+Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
+
+## Populated Database Data
+
+Once you run the `populate-db` script, you should have two users in your database:
+
+### Tony Stark
+
+- First Name: `Tony`
+- Last Name: `Stark`
+- Email: `tony@stark.com`
+- Password: `password123`
+
+### Steve Rogers
+
+- First Name: `Steve`,
+- Last Name: `Rogers`,
+- Email: `steve@rogers.com`,
+- Password: `password456`
+
+## API Documentation
+
+To learn more about how the API works, once you have started your local environment, you can visit: http://localhost:3001/api-docs
+
+## Design Assets
+
+Static HTML and CSS has been created for most of the site and is located in: `/designs`.
+
+For some of the dynamic features, like toggling user editing, there is a mock-up for it in `/designs/wireframes/edit-user-name.png`.
+
+And for the API model that you will be proposing for transactitons, the wireframe can be found in `/designs/wireframes/transactions.png`.

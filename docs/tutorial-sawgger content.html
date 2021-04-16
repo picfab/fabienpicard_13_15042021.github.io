@@ -43,7 +43,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-instal-server-api-tutorial.html">instal-server-api-tutorial</a></li><li><a href="tutorial-sawgger content.html">sawgger content</a></li></ul><h3>Components</h3><ul><li><a href="module-Accordion.html">Accordion</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-HeaderProfile.html">HeaderProfile</a></li><li><a href="module-HeaderTransaction.html">HeaderTransaction</a></li><li><a href="module-InputText.html">InputText</a></li><li><a href="module-ItemListTransaction.html">ItemListTransaction</a></li><li><a href="module-ItemTransaction.html">ItemTransaction</a></li><li><a href="module-SelectCat.html">SelectCat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#verifUser">verifUser</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li><li><a href="module-SignIn.html">SignIn</a></li><li><a href="module-Transactions.html">Transactions</a></li><li><a href="module-User.html">User</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-instal server api tutorial.html">instal server api tutorial</a></li><li><a href="tutorial-sawgger content.html">sawgger content</a></li></ul><h3>Components</h3><ul><li><a href="module-Accordion.html">Accordion</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-HeaderProfile.html">HeaderProfile</a></li><li><a href="module-HeaderTransaction.html">HeaderTransaction</a></li><li><a href="module-InputText.html">InputText</a></li><li><a href="module-ItemListTransaction.html">ItemListTransaction</a></li><li><a href="module-ItemTransaction.html">ItemTransaction</a></li><li><a href="module-SelectCat.html">SelectCat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#verifUser">verifUser</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li><li><a href="module-SignIn.html">SignIn</a></li><li><a href="module-Transactions.html">Transactions</a></li><li><a href="module-User.html">User</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -63,205 +63,6 @@
 <article>
     <p><code>Download the API project :</code>
 <a href="https://picfab.github.io/picfab-fabienpicard_13_15042021.github.io/sawgger.yaml">swagger.yaml</a></p>
-<p>swagger: '2.0'
-info:
-description: API des transactions de BilletBank, qui permet la récupération des transactions, ainsi que la mise à jour de ces dernières.
-version: 1.0.0
-title: BilletBank Transactions
-contact:
-email: pic.fab@hotmail.fr
-host: &quot;localhost:3001&quot;
-basePath: /api/v1/
-schemes:</p>
-<ul>
-<li>https
-paths:
-/transactions:
-post:
-tags:
-- transactions
-summary: GET array of transactions
-description: 'GET array of objects transactions with a start and end date in millisecond'
-operationId: getTransactions
-consumes:
-- application/json
-produces:
-- application/json
-parameters:
-- name: &quot;api_key&quot;
-in: &quot;header&quot;
-required: true
-type: &quot;string&quot;
-- in: body
-name: body
-description: 'start and end of the begining transactions selected'
-required: true
-schema:
-$ref: '#/definitions/TransactionsDemand'
-responses:
-'200':
-description: successful operation
-schema:
-type: array
-items:
-$ref: '#/definitions/Transaction'
-'400':
-description: Invalid status value
-'403':
-description: The access rights do not allow to access the resource. Send a valid token
-'422':
-description: The params are not valid
-'498':
-description: The token has expired or is invalid.
-security:
-- api_key: []</li>
-</ul>
-<p>/transaction/{id}:
-post:
-tags:
-- transaction
-summary: GET a transaction
-description: 'GET a specific transaction with a id'
-operationId: getTransaction
-consumes:
-- application/json
-produces:
-- application/json
-parameters:
-- name: &quot;api_key&quot;
-in: &quot;header&quot;
-required: true
-type: &quot;string&quot;
-- name: &quot;id&quot;
-in: &quot;path&quot;
-description: &quot;ID of transaction to return&quot;
-required: true
-type: &quot;integer&quot;
-format: &quot;int64&quot;</p>
-<pre><code>  responses:
-    '200':
-      description: successful operation
-      schema:
-        $ref: '#/definitions/Transaction'
-    '400':
-      description: Invalid status value
-    '403':
-      description: The access rights do not allow to access the resource. Send a valid token
-    '422':
-      description: The params are not valid
-    '498':
-      description: The token has expired or is invalid.
-  security:
-    - api_key: []
-
-put:
-  tags:
-    - transaction
-  summary: Update a transaction
-  description: 'Update notes or category of a transaction'
-  operationId: updateTransaction
-  consumes:
-    - application/json
-  produces:
-    - application/json
-  parameters:
-    - name: &quot;api_key&quot;
-      in: &quot;header&quot;
-      required: true
-      type: &quot;string&quot;
-    - name: &quot;id&quot;
-      in: &quot;path&quot;
-      description: &quot;ID of transaction to return&quot;
-      required: true
-      type: &quot;integer&quot;
-      format: &quot;int64&quot;
-    - in: body
-      name: body
-      description: 'If notes or categoryID empty, they will remove'
-      required: false
-      schema:
-        $ref: '#/definitions/TransactionUpdate'
-  responses:
-    '200':
-      description: successful operation
-      schema:
-        $ref: '#/definitions/Transaction'
-    '400':
-      description: Invalid status value
-    '403':
-      description: The access rights do not allow to access the resource. Send a valid token
-    '404':
-      description: Not transaction find
-    '422':
-      description: The params are not valid
-    '498':
-      description: The token has expired or is invalid.
-  security:
-    - api_key: []
-</code></pre>
-<p>securityDefinitions:
-api_key:
-type: apiKey
-name: api_key
-in: header
-definitions:
-Transaction:
-type: object
-required:
-- name
-properties:
-id:
-type: integer
-example: 1
-format: int64
-category:
-$ref: '#/definitions/Category'
-type:
-type: string
-example: Electronic
-balance:
-type: number
-example: 2097.04
-description:
-type: string
-example: Golden Sun Bakery
-notes:
-type: string
-example: A note about Golden Sun Bakery
-amount :
-type: number
-example: 5.15
-date:
-type: integer
-example: 1617173013966</p>
-<p>Category:
-type: object
-properties:
-id:
-type: integer
-format: int64
-name:
-type: string</p>
-<p>TransactionsDemand:
-type: object
-properties:
-start:
-type: number
-example: 1617173013966</p>
-<pre><code>  end:
-    type: number
-    example: 1617173013966
-</code></pre>
-<p>TransactionUpdate:
-type: object
-properties:
-notes:
-type: string
-example: A note about Golden Sun Bakery</p>
-<pre><code>  categoryId:
-    type: integer
-    example: 1
-</code></pre>
 </article>
 
 </section>
@@ -273,7 +74,7 @@ example: A note about Golden Sun Bakery</p>
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 16 2021 15:33:27 GMT+0200 (heure d’été d’Europe centrale)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 16 2021 15:38:16 GMT+0200 (heure d’été d’Europe centrale)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>

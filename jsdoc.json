@@ -22,7 +22,7 @@
   },
   "templates": {
     "better-docs": {
-      "name": "SportSee Documentation",
+      "name": "ArgentBank",
       "component": {
         "wrapper": "./src/wrapper/Component.js"
       }

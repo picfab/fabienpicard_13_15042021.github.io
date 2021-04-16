@@ -2,6 +2,12 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import iconChat from '../img/icon-chat.png'
 
+/**
+ * Create a Home view
+ * @module Routes
+ * @component
+ * @category Views
+ */
 export default function Home() {
   return (
     <>

@@ -13,6 +13,12 @@ import {
 } from '../store/userActions'
 import { verifUser } from '../controllers/verifuser'
 
+/**
+ * Create a User view
+ * @module User
+ * @component
+ * @category Views
+ */
 export default function User() {
   const [wait, setWait] = useState(true)
   const user = useSelector(userSelector)
@@ -34,41 +40,40 @@ export default function User() {
     )
   }, [user, wait, dispatch, history])
 
-  const { firstName, lastName } = user.data
   return (
     <>
       <Nav />
       <main className='main bg-dark' ref={refView}>
-        {wait ? (
-          'Wait'
-        ) : (
-          <>
-            <HeaderProfile
-              firstName={firstName}
-              lastName={lastName}
-              refView={refView}
-            />
-            <h2 className='sr-only'>Accounts</h2>
-            <ItemListTransaction
-              title='Argent Bank Checking'
-              nb='8349'
-              amount='2,082.79'
-              description='Available Balance'
-            />
-            <ItemListTransaction
-              title='Argent Bank Savings'
-              nb='6712'
-              amount='10,928.42'
-              description='Available Balance'
-            />
-            <ItemListTransaction
-              title='Argent Bank Credit Card'
-              nb='8349'
-              amount='184.30'
-              description='Current Balance'
-            />
-          </>
-        )}
+        {wait
+          ? 'Wait'
+          : user.data && (
+              <>
+                <HeaderProfile
+                  firstName={user.data.firstName}
+                  lastName={user.data.lastName}
+                  refView={refView}
+                />
+                <h2 className='sr-only'>Accounts</h2>
+                <ItemListTransaction
+                  title='Argent Bank Checking'
+                  nb={8349}
+                  amount={2082.79}
+                  description='Available Balance'
+                />
+                <ItemListTransaction
+                  title='Argent Bank Savings'
+                  nb={6712}
+                  amount={10928.42}
+                  description='Available Balance'
+                />
+                <ItemListTransaction
+                  title='Argent Bank Credit Card'
+                  nb={8349}
+                  amount={184.3}
+                  description='Current Balance'
+                />
+              </>
+            )}
       </main>
       <Footer />
     </>

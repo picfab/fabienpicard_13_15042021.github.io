@@ -9,11 +9,18 @@ import Footer from '../components/Footer'
 import { logUserAction } from '../store/userActions'
 import { userSelector } from '../store/userSelectors'
 
+/**
+ * Create a SignIn view
+ * @module SignIn
+ * @component
+ * @category Views
+ */
 export default function SignIn() {
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   const history = useHistory()
   const user = useSelector(userSelector)
@@ -58,7 +65,9 @@ export default function SignIn() {
         }
       })
       // eslint-disable-next-line no-console
-      .catch((error) => console.log('error', error))
+      .catch(() => {
+        setShowError(true)
+      })
   }
 
   return (
@@ -98,6 +107,7 @@ export default function SignIn() {
               />
               <label htmlFor='remember-me'>Remember me</label>
             </div>
+            {showError && <div htmlFor='error'>Error to email or password</div>}
             <button
               type='button'
               className='sign-in-button'

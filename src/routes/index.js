@@ -1,10 +1,19 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-children-prop */
+import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-export default function Routes(props) {
-  const { home, signin, user, transactions } = props.urls
+/**
+ * Create a accordion
+ * @module Routes
+ * @component
+ * @category Routes
+ * @param {object} props
+ * @prop {object} props.urls Object with all components's views
+ */
+export default function Routes({ urls }) {
+  const { home, signin, user, transactions } = urls
   return (
     <Router>
       <Switch>
@@ -15,4 +24,12 @@ export default function Routes(props) {
       </Switch>
     </Router>
   )
+}
+
+Routes.propTypes = {
+  /**
+   * Object with all components's views
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  urls: PropTypes.object.isRequired,
 }

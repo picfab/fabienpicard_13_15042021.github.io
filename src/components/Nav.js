@@ -7,7 +7,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutUserAction } from '../store/userActions'
 import { userSelector } from '../store/userSelectors'
 import argentBankLogo from '../img/argentBankLogo.png'
-
+/**
+ * Create a Navigation section
+ * @module Footer
+ * @component
+ * @example
+ * return (
+ *   <Nav />
+ * )
+ */
 export default function Nav() {
   const history = useHistory()
   const location = useLocation()

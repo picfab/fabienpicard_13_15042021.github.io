@@ -1,3 +1,12 @@
+/**
+ * Create a Footer section
+ * @module Footer
+ * @component
+ * @example
+ * return (
+ *   <Footer />
+ * )
+ */
 export default function Footer() {
   return (
     <footer className='footer'>

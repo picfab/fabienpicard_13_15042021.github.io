@@ -14,6 +14,12 @@ import {
 import ItemTransaction from '../components/ItemTransaction'
 import { verifUser } from '../controllers/verifuser'
 
+/**
+ * Create a Transactions view
+ * @module Transactions
+ * @component
+ * @category Views
+ */
 export default function Transactions() {
   const location = useLocation()
   const [wait, setWait] = useState(true)
@@ -61,7 +67,10 @@ export default function Transactions() {
               </div>
               <div className='listContent__accordions'>
                 {transactions.map((transaction) => (
-                  <ItemTransaction transaction={transaction} />
+                  <ItemTransaction
+                    key={`${transaction.id}`}
+                    transaction={transaction}
+                  />
                 ))}
               </div>
             </div>

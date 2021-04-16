@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: components/HeaderProfile.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                     
+                        <h1 class="navbar-item">ArgentBank</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Tutorials</h3><ul><li><a href="tutorial-instal-server-api-tutorial.html">instal-server-api-tutorial</a></li></ul><h3>Components</h3><ul><li><a href="module-Accordion.html">Accordion</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-HeaderProfile.html">HeaderProfile</a></li><li><a href="module-HeaderTransaction.html">HeaderTransaction</a></li><li><a href="module-InputText.html">InputText</a></li><li><a href="module-ItemListTransaction.html">ItemListTransaction</a></li><li><a href="module-ItemTransaction.html">ItemTransaction</a></li><li><a href="module-SelectCat.html">SelectCat</a></li></ul><h3>Global</h3><ul><li><a href="global.html#verifUser">verifUser</a></li></ul></div><div class="category"><h2>Routes</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li></ul></div><div class="category"><h2>Views</h2><h3>Components</h3><ul><li><a href="module-Routes.html">Routes</a></li><li><a href="module-SignIn.html">SignIn</a></li><li><a href="module-Transactions.html">Transactions</a></li><li><a href="module-User.html">User</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>components/HeaderProfile.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react/button-has-type */
+import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { userSelector } from '../store/userSelectors'
+import { updateDataUserAction } from '../store/userActions'
+
+/**
+ * Create a HeaderProfile
+ * @module HeaderProfile
+ * @component
+ * @param {object} props
+ * @prop {string} props.firstName
+ * @prop {string} props.lastName
+ * @prop {object} props.refView The ref of the view for change the color background when user are in editing screen
+ * @example
+ * return (
+ *   &lt;HeaderProfile firstName='Titre' lastName='The content of accordion'/>
+ * )
+ */
+export default function HeaderProfile({ firstName, lastName, refView }) {
+  const [toggle, setToggle] = useState(false)
+  const [firstNameTemp, setFirstNameTemp] = useState('')
+  const [lastNameTemp, setLastNameTemp] = useState('')
+  const user = useSelector(userSelector)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (firstName !== firstNameTemp) {
+      setFirstNameTemp(firstName)
+    }
+    if (lastName !== lastNameTemp) {
+      setLastNameTemp(lastName)
+    }
+  }, [firstName, lastName])
+
+  const handleToogle = () => {
+    if (!toggle &amp;&amp; refView) {
+      // eslint-disable-next-line react/prop-types
+      refView.current.classList.remove('bg-dark')
+      // eslint-disable-next-line react/prop-types
+      refView.current.classList.add('bg-light')
+    } else if (refView) {
+      // eslint-disable-next-line react/prop-types
+      refView.current.classList.add('bg-dark')
+      // eslint-disable-next-line react/prop-types
+      refView.current.classList.remove('bg-light')
+    }
+    setToggle(!toggle)
+  }
+
+  /**
+   * Save input change in database with API
+   */
+  const save = (e) => {
+    e.preventDefault()
+    const myHeaders = new Headers()
+    myHeaders.append('Authorization', `Bearer ${user.token}`)
+    myHeaders.append('Content-Type', 'application/json')
+    myHeaders.append('Cookie', 'cxssh_status=off')
+
+    const raw = JSON.stringify({
+      firstName: firstNameTemp,
+      lastName: lastNameTemp,
+    })
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    }
+
+    fetch('http://localhost:3001/api/v1/user/profile', requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        dispatch(updateDataUserAction(result.body))
+        handleToogle()
+      })
+      // eslint-disable-next-line no-console
+      .catch((error) => console.log('error', error))
+  }
+
+  return (
+    &lt;div className='header'>
+      &lt;h1>
+        Welcome back
+        &lt;br />
+        {!toggle &amp;&amp; `${firstName} ${lastName}`}
+      &lt;/h1>
+      {!toggle ? (
+        &lt;button
+          onKeyDown={handleToogle}
+          className='edit-button'
+          onClick={handleToogle}>
+          Edit Name
+        &lt;/button>
+      ) : (
+        &lt;div className='edit-form'>
+          &lt;input
+            type='text'
+            placeholder='First name'
+            value={firstNameTemp}
+            onChange={(e) => setFirstNameTemp(e.target.value)}
+          />
+          &lt;input
+            type='text'
+            placeholder='Last name'
+            value={lastNameTemp}
+            onChange={(e) => setLastNameTemp(e.target.value)}
+          />
+          &lt;button className='accept-button' onClick={save} onKeyDown={save}>
+            Save
+          &lt;/button>
+          &lt;button
+            className='cancel-button'
+            onClick={handleToogle}
+            onKeyDown={handleToogle}>
+            Cancel
+          &lt;/button>
+        &lt;/div>
+      )}
+    &lt;/div>
+  )
+}
+
+HeaderProfile.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  /**
+   * The ref of the view for change the color background when user are in editing screen
+   */
+  // eslint-disable-next-line react/require-default-props
+  refView: PropTypes.shape({ current: PropTypes.instanceOf(HTMLElement) }),
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 16 2021 14:50:13 GMT+0200 (heure d’été d’Europe centrale)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

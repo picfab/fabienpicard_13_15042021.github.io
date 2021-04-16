@@ -42,7 +42,26 @@ function dateApp(date) {
 }
 
 /**
- * Accordion with title and content
+ * Create a Header for the Transaction view
+ * @module ItemTransaction
+ * @component
+ * @param {object} props
+ * @prop {object} props.transaction
+ * @example
+ * return (
+ *   <ItemTransaction
+ *       transaction={{
+ *         amount: 5.15,
+ *         balance: 2000,
+ *         category: {id: 1, name: "Food"},
+ *         date: 1617173013966,
+ *         description: "Golden Sun Bakery",
+ *         id: 2,
+ *         notes: "A note about Golden Sun Bakery",
+ *         type: "Electronic",
+ *       }}
+ *       />
+ * )
  */
 export default function ItemTransaction({ transaction }) {
   const dispatch = useDispatch()
@@ -81,12 +100,7 @@ export default function ItemTransaction({ transaction }) {
           </div>
           <div className='listContent__note'>
             Note :{' '}
-            <InputText
-              value={transaction.notes}
-              transaction={transaction}
-              type='notes'
-              onValid={valid}
-            />
+            <InputText transaction={transaction} type='notes' onValid={valid} />
           </div>
         </div>
       }

@@ -25,7 +25,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"doc": "jsdoc -c jsdoc.json",
-		"doccss": "node-sass --include-path scss ./src/sass/main.scss ./docs/styles.css"
+		"doccss": "node-sass --include-path scss ./src/sass/doc.scss ./docs/styles.css"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -48,7 +48,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.13.13",
 		"@babel/preset-env": "^7.13.12",
-		"better-docs": "^2.3.2",
+		"better-docs": "^1.2.2",
 		"eslint": "^7.24.0",
 		"eslint-config-airbnb": "^18.2.1",
 		"eslint-config-prettier": "^8.2.0",

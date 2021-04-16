@@ -4,11 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 
 /**
- * Accordion with title and content
+ * Create a accordion
+ * @module Accordion
+ * @component
+ * @param {object} props
+ * @prop {element|string} props.content The content of accordion in JSX or string
+ * @prop {element|string} props.title The content of accordion in JSX or string
+ * @example
+ * return (
+ *   <Accordion title='Titre' content='The content of accordion'/>
+ * )
  */
-export default function Accordion(props) {
+export default function Accordion({ content, title }) {
   const [open, setOpen] = useState(false)
-
   /**
    * Set the state for open the accordion
    * and calculate the height of component in DOM
@@ -24,7 +32,6 @@ export default function Accordion(props) {
     setOpen(!open)
   }
 
-  const { content, title } = props
   return (
     <div className='accordion'>
       <div className='accordion__container'>
@@ -52,7 +59,13 @@ export default function Accordion(props) {
 }
 
 Accordion.propTypes = {
-  title: PropTypes.string.isRequired,
+  /**
+   * The content of accordion in JSX or string
+   */
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  /**
+   * The content of accordion in JSX or string
+   */
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
     .isRequired,
 }

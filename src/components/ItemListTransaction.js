@@ -1,6 +1,25 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+/**
+ * Create a Header for the Transaction view
+ * @module ItemListTransaction
+ * @component
+ * @param {object} props
+ * @prop {string} props.title
+ * @prop {string} props.description
+ * @prop {number} props.amount
+ * @prop {number} props.nb
+ * @example
+ * return (
+ *   <ItemListTransaction
+ *       title='Argent Bank Checking'
+ *       amount={5.15}
+ *       description: "Available Balance"
+ *       nb={8349}
+ *       />
+ * )
+ */
 export default function ItemListTransaction({
   title,
   amount,

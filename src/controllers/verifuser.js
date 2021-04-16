@@ -1,4 +1,18 @@
-// eslint-disable-next-line import/prefer-default-export
+/* eslint-disable import/prefer-default-export */
+
+/**
+ * Verify if user are connected a token in local storage is valid.<br/>
+ * And redirect if the user can't acces to an user page
+ * @function verifUser
+ * @prop {object} user From user's store
+ * @prop {function} dispatch Function for connected to redux's dispatch
+ * @prop {object} history Object from react-router for redirect user
+ * @prop {function} updateDataUserAction Action for update user and set user's store
+ * @prop {function} logoutUserAction Action for logout user and set user's store
+ * @prop {function} logUserAction Action for login user and set user's store
+ * @return  {null}
+ */
+
 export function verifUser(
   user,
   dispatch,

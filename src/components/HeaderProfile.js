@@ -5,6 +5,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userSelector } from '../store/userSelectors'
 import { updateDataUserAction } from '../store/userActions'
 
+/**
+ * Create a HeaderProfile
+ * @module HeaderProfile
+ * @component
+ * @param {object} props
+ * @prop {string} props.firstName
+ * @prop {string} props.lastName
+ * @prop {object} props.refView The ref of the view for change the color background when user are in editing screen
+ * @example
+ * return (
+ *   <HeaderProfile firstName='Titre' lastName='The content of accordion'/>
+ * )
+ */
 export default function HeaderProfile({ firstName, lastName, refView }) {
   const [toggle, setToggle] = useState(false)
   const [firstNameTemp, setFirstNameTemp] = useState('')
@@ -13,17 +26,21 @@ export default function HeaderProfile({ firstName, lastName, refView }) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setFirstNameTemp(firstName)
-    setLastNameTemp(lastName)
+    if (firstName !== firstNameTemp) {
+      setFirstNameTemp(firstName)
+    }
+    if (lastName !== lastNameTemp) {
+      setLastNameTemp(lastName)
+    }
   }, [firstName, lastName])
 
   const handleToogle = () => {
-    if (!toggle) {
+    if (!toggle && refView) {
       // eslint-disable-next-line react/prop-types
       refView.current.classList.remove('bg-dark')
       // eslint-disable-next-line react/prop-types
       refView.current.classList.add('bg-light')
-    } else {
+    } else if (refView) {
       // eslint-disable-next-line react/prop-types
       refView.current.classList.add('bg-dark')
       // eslint-disable-next-line react/prop-types
@@ -31,6 +48,10 @@ export default function HeaderProfile({ firstName, lastName, refView }) {
     }
     setToggle(!toggle)
   }
+
+  /**
+   * Save input change in database with API
+   */
   const save = (e) => {
     e.preventDefault()
     const myHeaders = new Headers()
@@ -106,6 +127,9 @@ export default function HeaderProfile({ firstName, lastName, refView }) {
 HeaderProfile.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  refView: PropTypes.shape({ current: PropTypes.instanceOf(HTMLElement) })
-    .isRequired,
+  /**
+   * The ref of the view for change the color background when user are in editing screen
+   */
+  // eslint-disable-next-line react/require-default-props
+  refView: PropTypes.shape({ current: PropTypes.instanceOf(HTMLElement) }),
 }

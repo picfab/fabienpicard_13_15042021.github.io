@@ -11,7 +11,7 @@ schemes:
   - https
 paths:
   /transactions:
-    post:
+    get:
       tags:
         - transactions
       summary: GET array of transactions
@@ -26,12 +26,14 @@ paths:
           in: "header"
           required: true
           type: "string"
-        - in: body
-          name: body
-          description: 'start and end of the begining transactions selected'
-          required: true
-          schema:
-            $ref: '#/definitions/TransactionsDemand'
+        - in: "query"
+          name: start
+          type: integer
+          description: Date start in milisecond
+        - in: "query"
+          name: end
+          type: integer
+          description: Date end in milisecond
       responses:
         '200':
           description: successful operation
@@ -51,7 +53,7 @@ paths:
         - api_key: []
 
   /transaction/{id}:
-    post:
+    get:
       tags:
         - transaction
       summary: GET a transaction
@@ -201,7 +203,3 @@ definitions:
       categoryId:
         type: integer
         example: 1
-
-
-
-

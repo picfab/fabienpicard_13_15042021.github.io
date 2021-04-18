@@ -25,7 +25,6 @@ export default function Nav() {
     e.preventDefault()
     dispatch(logoutUserAction())
     localStorage.removeItem('token')
-    localStorage.removeItem('lastConnection')
     history.push('/')
   }
   return (

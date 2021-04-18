@@ -1,15 +1,15 @@
-![capture](https://raw.githubusercontent.com/picfab/picfab-fabienpicard_13_15042021.github.io/master/docs/capture.png)
+![capture](https://raw.githubusercontent.com/picfab/fabienpicard_13_15042021.github.io/master/docs/capture.png)
 
 ## Documentation
 
-Find the documentation [here](https://picfab.github.io/picfab-fabienpicard_13_15042021.github.io/)
+Find the documentation [here](https://picfab.github.io/fabienpicard_13_15042021.github.io/)
 
 ## Prerequisite
 
 ### First install the node server
 
 ``See how install and start node server for the API here :``
-[Server for the API](https://picfab.github.io/picfab-fabienpicard_13_15042021.github.io/tutorial-Instal%20server%20API%20tutorial.html)
+[Server for the API](https://picfab.github.io/fabienpicard_13_15042021.github.io/tutorial-Instal%20server%20API%20tutorial.html)
 
 When you are start the node server you can continu to install the App.
 
